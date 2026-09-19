@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoCash Loans · Fast Approval</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-flex">
+      <div class="logo">Eco<span>Cash</span></div>
+      <a href="/admin" class="btn-outline-small">Admin</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Get Your Loan <i>Approved Fast</i></h1>
+        <p>Quick approval • Competitive rates • Flexible terms</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-title">Loan Calculator</div>
+
+        <label>Loan amount: <span id="amountDisplay">$500</span></label>
+        <input type="range" id="amountSlider" min="500" max="50000" value="500" step="100" />
+
+        <label>Term: <span id="termDisplay">12 months</span></label>
+        <input type="range" id="termSlider" min="6" max="60" value="12" step="1" />
+
+        <div class="monthly-payment">
+          <span>Monthly Payment</span>
+          <span class="payment-amount" id="monthlyPayment">$42.69</span>
+        </div>
+
+        <form id="applyForm">
+          <input type="text"   name="name"  placeholder="Full name" required />
+          <input type="email"  name="email" placeholder="Email" required />
+          <input type="tel"    name="phone" placeholder="Phone (optional)" />
+          <input type="hidden" name="amount"  id="formAmount" />
+          <input type="hidden" name="term"    id="formTerm" />
+          <input type="hidden" name="monthly" id="formMonthly" />
+          <button type="submit" class="action-btn" id="submitBtn">Apply Now</button>
+        </form>
+
+        <div id="formMessage" style="margin-top:12px;font-size:0.9rem;"></div>
+      </div>
+    </div>
+  </header>
+
+  <script src="script.js"></script>
+</body>
+</html>

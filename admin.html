@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin · Applications</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background:#f6f9fc; padding:32px; }
+    h1 { color:#0b2b4b; }
+    table { width:100%; border-collapse:collapse; background:white; border-radius:12px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.06); }
+    th, td { padding:12px 14px; text-align:left; border-bottom:1px solid #eef2f7; }
+    th { background:#0f8b5e; color:white; }
+    input[type="password"] { padding:10px 14px; border:1px solid #cde8dd; border-radius:8px; }
+    button { padding:10px 18px; background:#0f8b5e; color:white; border:0; border-radius:8px; cursor:pointer; font-weight:600; }
+  </style>
+</head>
+<body>
+  <h1>📋 Loan Applications</h1>
+  <div style="margin:20px 0;">
+    <input id="tokenInput" type="password" placeholder="Admin token" />
+    <button onclick="loadEntries()">Load</button>
+  </div>
+  <div id="stat" style="margin-bottom:12px;"></div>
+  <div id="tableWrap"></div>
+
+  <script>
+    async function loadEntries() {
+      const token = document.getElementById('tokenInput').value.trim();
+      const stat  = document.getElementById('stat');
+      const wrap  = document.getElementById('tableWrap');
+      stat.textContent = 'Loading...';
+      wrap.innerHTML = '';
+      try {
+        const res = await fetch('/api/entries?token=' + encodeURIComponent(token));
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed');
+        stat.textContent = Total: ${data.count};
+        if (!data.entries.length) { wrap.innerHTML = '<p>No entries yet.</p>'; return; }
+        const rows = data.entries.map(e => `
+          <tr>
+            <td>${new Date(e.created_at).toLocaleString()}</td>
+            <td>${e.name}</td><td>${e.email}</td><td>${e.phone || '—'}</td>
+            <td>$${Number(e.amount).toLocaleString()}</td>
+            <td>${e.term} mo</td>
+            <td>$${Number(e.monthly).toFixed(2)}</td>
+          </tr>`).join('');
+        wrap.innerHTML = `<table>
+          <thead><tr><th>Date</th><th>Name</th><th>Email</th><th>Phone</th><th>Amount</th><th>Term</th><th>Monthly</th></tr></thead>
+          <tbody>${rows}</tbody></table>`;
+      } catch (err) { stat.textContent = 'Error: ' + err.message; }
+    }
+  </script>
+</body>
+</html>

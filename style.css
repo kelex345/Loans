@@ -1,0 +1,33 @@
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #f6f9fc; color: #1a2a3a; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+.navbar { background: white; padding: 16px 0; box-shadow: 0 4px 12px rgba(0,20,40,0.04); }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 700; font-size: 1.45rem; color: #0b2b4b; }
+.logo span { color: #0f8b5e; }
+.btn-outline-small { border: 1.5px solid #0f8b5e; color: #0f8b5e; padding: 8px 22px; border-radius: 40px; text-decoration: none; font-weight: 600; }
+
+.hero { padding: 48px 0; background: linear-gradient(140deg, #fff, #f3faf7); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hero-content h1 { font-size: 3rem; font-weight: 800; color: #0b2b4b; margin-bottom: 16px; }
+.hero-content h1 i { color: #0f8b5e; font-style: normal; }
+
+.calc-card { background: white; border-radius: 32px; padding: 30px 28px; box-shadow: 0 25px 50px -12px rgba(0,30,30,0.25); }
+.calc-title { font-weight: 600; font-size: 1.3rem; margin-bottom: 24px; color: #0b2b4b; }
+.calc-card label { display: block; margin: 12px 0 6px; font-weight: 500; }
+.calc-card input[type="range"] { width: 100%; }
+.monthly-payment { background: #f0f9f4; border-radius: 20px; padding: 18px 20px; margin: 20px 0; display: flex; justify-content: space-between; align-items: center; border: 1px solid #b8dfcf; }
+.payment-amount { font-size: 2rem; font-weight: 800; color: #0b2b4b; }
+
+#applyForm { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+#applyForm input[type="text"], #applyForm input[type="email"], #applyForm input[type="tel"] {
+  padding: 14px 16px; border: 1px solid #cde8dd; border-radius: 12px; font-size: 0.95rem; outline: none;
+}
+#applyForm input:focus { border-color: #0f8b5e; }
+.action-btn { background: #0f8b5e; color: white; border: none; padding: 16px; border-radius: 40px; font-weight: 700; font-size: 1.05rem; cursor: pointer; }
+.action-btn:hover { background: #0c6e4a; }
+.action-btn:disabled { opacity: 0.7; cursor: wait; }
+
+@media (max-width: 850px) { .hero-grid { grid-template-columns: 1fr; } .hero-content h1 { font-size: 2rem; } }
